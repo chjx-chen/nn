@@ -1,7 +1,5 @@
+PyTorch版本 (CNN_pytorch.py) 补全部分：
 
-**PyTorch版本 (CNN_pytorch.py) 补全部分：**
-
-```python
 # 第一个卷积层参数补全
 self.conv1 = nn.Sequential(
     nn.Conv2d(in_channels=1, out_channels=32, kernel_size=7, stride=1, padding=3),
@@ -18,11 +16,8 @@ self.conv2 = nn.Sequential(
 
 # 展平操作补全
 x = x.view(x.size(0), -1)  # 或 x = x.view(-1, 7*7*64)
-```
+TensorFlow版本 (CNN_tensorflow.py) 补全部分：
 
-**TensorFlow版本 (CNN_tensorflow.py) 补全部分：**
-
-```python
 # 补全卷积和池化函数
 def conv2d(x, W):
     return tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
@@ -42,10 +37,8 @@ W_conv2 = weight_variable([5, 5, 32, 64])  # 5x5卷积核，输入通道32，输
 b_conv2 = bias_variable([64])
 h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)
 h_pool2 = max_pool_2x2(h_conv2)
-```
-
-
 按AlexNet结构补全更多卷积层和全连接层：
+
 class myConvModel(keras.Model):
     def __init__(self):
         super(myConvModel, self).__init__()

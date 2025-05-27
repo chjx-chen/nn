@@ -1,4 +1,5 @@
-class mySeq2SeqModel(keras.Model):
+#代码实现
+
     def __init__(self):
         super(mySeq2SeqModel, self).__init__()
         self.v_sz = 27
