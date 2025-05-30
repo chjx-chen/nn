@@ -1,12 +1,13 @@
+**代码示例**
+
+```python
 # python: 3.5.2
 # encoding: utf-8
 
 import numpy as np
 
 def load_data(fname):
-    """
-    载入数据。
-    """
+    #载入数据。
     with open(fname, 'r') as f:
         data = []
         line = f.readline()  # 跳过标题行
@@ -19,15 +20,11 @@ def load_data(fname):
         return np.array(data)
 
 def eval_acc(label, pred):
-    """
-    计算准确率。
-    """
+    #计算准确率。
     return np.sum(label == pred) / len(pred)
 
 class SVM():
-    """
-    SVM模型。
-    """
+    #SVM模型。
     def __init__(self):
         self.w = None  # 权重向量
         self.b = 0     # 偏置项
@@ -57,9 +54,7 @@ class SVM():
                     self.b -= learning_rate * (-t[idx])
 
     def predict(self, x):
-        """
-        预测标签。
-        """
+        #预测标签。
         decision_values = np.dot(x, self.w) + self.b
         # 返回预测标签（1或-1）
         return np.where(decision_values >= 0, 1, -1)
@@ -87,3 +82,5 @@ if __name__ == '__main__':
     acc_test = eval_acc(t_test, t_test_pred)
     print("train accuracy: {:.1f}%".format(acc_train * 100))
     print("test accuracy: {:.1f}%".format(acc_test * 100))
+```
+

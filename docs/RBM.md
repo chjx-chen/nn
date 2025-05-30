@@ -1,13 +1,15 @@
+**代码示例**
+
+```python
 # python: 2.7
 # encoding: utf-8
-
 import numpy as np
 
 class RBM:
-    """Restricted Boltzmann Machine."""
+    #Restricted Boltzmann Machine.
 
     def __init__(self, n_hidden=2, n_observe=784):
-        """Initialize model."""
+        #Initialize model.
         self.n_hidden = n_hidden
         self.n_observe = n_observe
         # 初始化权重和偏置
@@ -16,15 +18,15 @@ class RBM:
         self.b_v = np.zeros(n_observe)  # 可见层偏置
 
     def _sigmoid(self, x):
-        """Sigmoid激活函数"""
+        #Sigmoid激活函数
         return 1.0 / (1 + np.exp(-x))
 
     def _sample_binary(self, probs):
-        """伯努利采样"""
+        #伯努利采样
         return np.random.binomial(1, probs)
 
     def train(self, data):
-        """Train model using data."""
+        #Train model using data.
         # 将数据展平为二维数组 [n_samples, n_observe]
         data_flat = data.reshape(data.shape[0], -1)
         n_samples = data_flat.shape[0]
@@ -59,7 +61,7 @@ class RBM:
                 self.b_h += learning_rate * db_h / batch_size
 
     def sample(self):
-        """Sample from trained model using Gibbs sampling."""
+        #Sample from trained model using Gibbs sampling.
         # 初始化随机可见层（伯努利分布）
         v = np.random.binomial(1, 0.5, self.n_observe)
         # 进行1000次Gibbs采样
@@ -86,3 +88,5 @@ if __name__ == '__main__':
     # 生成样本
     generated_image = rbm.sample()
     print("Generated sample shape:", generated_image.shape)
+```
+

@@ -1,9 +1,9 @@
-## 热身示例
+# 热身示例numpy 练习题
+
+```python
 #!/usr/bin/env python3
 # coding: utf-8
-
 # numpy 练习题
-
 # numpy 的array操作
 
 # 1.导入numpy库
@@ -229,5 +229,7 @@ plt.legend(loc='upper right')
 plt.show()
 
 
-[完整代码](https://github.com/OpenHUTB/nn/blob/main/src/chap01_warmup/numpy_tutorial.py) 。
+#[完整代码](https://github.com/OpenHUTB/nn/blob/main/src/chap01_warmup/numpy_tutorial.py) 。
+```
+
 

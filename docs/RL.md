@@ -1,3 +1,6 @@
+**代码示例**
+
+```python
 import tensorflow as tf
 import os
 import numpy as np
@@ -58,3 +61,5 @@ class RL_QG_agent:
 
     def load_model(self):
         self.saver.restore(self.sess, os.path.join(self.model_dir, 'parameter.ckpt'))
+```
+

@@ -1,3 +1,7 @@
+
+**示例代码**
+
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import multivariate_normal
@@ -132,3 +136,5 @@ if __name__ == "__main__":
     plt.xlabel("Feature 1")
     plt.ylabel("Feature 2")
     plt.show()
+```
+

@@ -1,16 +1,19 @@
 # 循环神经网络
- ​​目录结构​​
-poetry_gen/
-├── data/
-│   └── poems.txt
-├── models/
-│   ├── tf_rnn.py          # TensorFlow实现
-│   └── pytorch_rnn.py     # PyTorch实现
-├── utils/
-│   └── data_utils.py      # 数据处理
-└── train.py               # 训练入口
 
-TensorFlow实现：
+**​​目录结构**​​  
+poetry_gen/  
+├── data/  
+│   └── poems.txt  
+├── models/  
+│   ├── tf_rnn.py         # TensorFlow实现  
+│   └── pytorch_rnn.py     # PyTorch实现  
+├── utils/  
+│   └── data_utils.py      # 数据处理  
+└── train.py               # 训练入口  
+
+
+```python
+#TensorFlow实现：
 class myRNNModel(keras.Model):
     def __init__(self, w2id):
         super().__init__()
@@ -37,7 +40,7 @@ class myRNNModel(keras.Model):
         return token[0][0], new_state  # 返回单个token和更新后的状态
         
 
-训练部分补充：
+#训练部分补充：
 def train_one_step(model, optimizer, x, y, seqlen):
     with tf.GradientTape() as tape:
         logits, _ = model(x)  # 直接获取logits和状态
@@ -61,7 +64,7 @@ def gen_sentence(model, start_token, end_token, max_len=50):
             break
     return [id2word[t] for t in collect if t != word2id[end_token]]
     
-补全代码（rnn_lstm.py）​​：
+#补全代码（rnn_lstm.py）​​：
 class RNN_model(nn.Module):
     def __init__(self, batch_sz, vocab_len, word_embedding, embedding_dim, lstm_hidden_dim):
         super().__init__()
@@ -87,7 +90,7 @@ class RNN_model(nn.Module):
             torch.zeros(2, batch_size, self.rnn_lstm.hidden_size)
         )
         
- ​​训练循环缺少状态管理：
+ ​#​训练循环缺少状态管理：
  def train_one_step(model, optimizer, x, y):
     optimizer.zero_grad()
     hidden = model.init_hidden(x.size(0))
@@ -115,8 +118,8 @@ def generate_poem(model, start_word, max_length=20):
                 break
     return ' '.join(poem)
     
-缺失部分​​：未过滤非法字符，词汇表构建错误
-​​补全代码​​：
+#缺失部分​​：未过滤非法字符，词汇表构建错误
+#​​补全代码​​：
 def preprocess_text(text):
     text = text.replace('\n', ' ').replace('\r', '')
     text = re.sub(r'[^\u4e00-\u9fff]', ' ', text)  # 仅保留中文
@@ -131,7 +134,7 @@ sorted_words = sorted(word_counts.items(), key=lambda x: (-x[1], x[0]))
 words, _ = zip(*sorted_words)
 word2idx = {word: idx for idx, word in enumerate(words)}
 
-​​生成控制补全代码：
+​#​生成控制补全代码：
 def generate_with_temperature(model, start_token, temperature=0.8, max_len=50):
     state = model.rnn_layer.cell.get_initial_state(batch_size=1, dtype=tf.float32)
     cur_token = tf.constant([[word2id[start_token]]])
@@ -147,7 +150,7 @@ def generate_with_temperature(model, start_token, temperature=0.8, max_len=50):
         cur_token = tf.constant([[token]])
     return [id2word[t] for t in collect if t != word2id['eos']]
     
-添加Beam Search​​（PyTorch示例）：
+#添加Beam Search​​（PyTorch示例）：
 def beam_search(model, start_token, beam_size=5, max_len=20):
     model.eval()
     with torch.no_grad():
@@ -172,18 +175,8 @@ def beam_search(model, start_token, beam_size=5, max_len=20):
         
         return [id2word[idx] for idx in sequences[0] if idx != word2idx['EOS']]
         
-        生成诗歌​​：
+#生成诗歌​​：
 from models.tf_rnn import generate_with_temperature
 print(generate_with_temperature('山', temperature=0.7))
-            
-    
-    
+```          
 
-
-    
-    
-    
-         
-        
-    
-             

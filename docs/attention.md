@@ -1,5 +1,6 @@
-#代码实现
+**代码实现**
 
+```python
     def __init__(self):
         super(mySeq2SeqModel, self).__init__()
         self.v_sz = 27
@@ -19,9 +20,7 @@
         
     @tf.function
     def call(self, enc_ids, dec_ids):
-        '''
-        完成带attention机制的 sequence2sequence 模型的搭建
-        '''
+        #完成带attention机制的 sequence2sequence 模型的搭建
         # 编码阶段
         enc_emb = self.embed_layer(enc_ids)
         enc_outputs, enc_state = self.encoder(enc_emb)  # enc_outputs: (batch, seq_len, hidden)
@@ -49,9 +48,7 @@
         return enc_outputs, enc_state  # 返回全部编码输出和最后状态
     
     def get_next_token(self, x, state, enc_outputs):
-        '''
-        实现单步解码逻辑（带注意力）
-        '''
+        #实现单步解码逻辑（带注意力）
         x_emb = self.embed_layer(x)  # (batch, emb_dim)
         
         # RNN解码步骤
@@ -69,3 +66,5 @@
         
         predicted_id = tf.argmax(logits, axis=-1, output_type=tf.int32)
         return predicted_id, new_state
+```
+
