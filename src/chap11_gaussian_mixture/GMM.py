@@ -85,12 +85,18 @@ class GaussianMixtureModel:
     def __init__(self, n_components=3, max_iter=100, tol=1e-6):
         
         # 初始化模型参数
+        #参数:
+            #n_components (int): 高斯分布的数量，默认为3
+            #max_iter (int): EM算法的最大迭代次数，默认为100
+            #tol (float): 收敛阈值(对数似然变化量)，默认为1e-6
         self.n_components = n_components  # 高斯分布数量
         self.max_iter = max_iter          # EM算法最大迭代次数
         self.tol = tol                    # 收敛阈值
     
     def fit(self, X):
         """使用EM算法训练模型"""
+        #参数: X (ndarray): 输入数据，形状为(n_samples, n_features)
+        #返回: self: 训练后的模型实例
         n_samples, n_features = X.shape
         
         # 初始化混合系数（均匀分布）
@@ -161,6 +167,13 @@ class GaussianMixtureModel:
         return self
 
     def _log_gaussian(self, X, mu, sigma):
+        #计算多元高斯分布的对数概率密度
+        #参数:
+            #X (ndarray): 输入数据，形状为(n_samples, n_features)
+            #mu (ndarray): 高斯分布的均值向量
+            #sigma (ndarray): 高斯分布的协方差矩阵
+        #返回:
+            #ndarray: 每个样本的对数概率密度
         # 获取特征维度数量
         n_features = mu.shape[0]
 
