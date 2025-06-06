@@ -170,23 +170,23 @@ register(
     id='CliffWalking-v0',
     entry_point='gym.envs.toy_text:CliffWalkingEnv',
 )
-
+# N链问题：探索与利用平衡的经典测试
 register(
     id='NChain-v0',
     entry_point='gym.envs.toy_text:NChainEnv',
     max_episode_steps=1000,
 )
-
+# 轮盘赌模拟环境
 register(
     id='Roulette-v0',
     entry_point='gym.envs.toy_text:RouletteEnv',
     max_episode_steps=100,
 )
-
+# 出租车调度任务（包含乘客接送）
 register(
     id='Taxi-v2',
     entry_point='gym.envs.toy_text.taxi:TaxiEnv',
-    reward_threshold=8, # optimum = 8.46
+    reward_threshold=8, # optimum = 8.46，理论最优8.46
     max_episode_steps=200,
 )
 
