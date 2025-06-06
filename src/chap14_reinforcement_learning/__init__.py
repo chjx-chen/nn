@@ -63,8 +63,8 @@ register(
 register(
     id = 'CartPole-v1',  # 更高难度版本
     entry_point = 'gym.envs.classic_control:CartPoleEnv',
-    max_episode_steps = 500,  # 500步达标
-    reward_threshold = 475.0,
+    max_episode_steps = 500,  # 500步达标，延长测试时间增加难度
+    reward_threshold = 475.0,# 相应提高奖励阈值
 )
 
 register(
@@ -76,14 +76,14 @@ register(
 register(
     id='MountainCarContinuous-v0',    # 连续动作版本
     entry_point='gym.envs.classic_control:Continuous_MountainCarEnv',
-    max_episode_steps=999,
-    reward_threshold=90.0,
+    max_episode_steps=999,# 更长步数限制
+    reward_threshold=90.0,# 正阈值表示最大化累积奖励
 )
 
 register(
     id='Pendulum-v0',   # 钟摆任务：摆到垂直位置
     entry_point='gym.envs.classic_control:PendulumEnv',
-    max_episode_steps=200,
+    max_episode_steps=200,# 无明确阈值，常用于连续控制测试
 )
 
 register(
