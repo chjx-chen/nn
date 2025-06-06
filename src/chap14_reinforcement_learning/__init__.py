@@ -275,18 +275,18 @@ register(
     max_episode_steps=1000,
     entry_point='gym.envs.mujoco:Walker2dEnv',
 )
-
+# 蚂蚁四足机器人
 register(
     id='Ant-v1',
     entry_point='gym.envs.mujoco:AntEnv',
     max_episode_steps=1000,
-    reward_threshold=6000.0,
+    reward_threshold=6000.0,# 复杂运动控制
 )
-
+# 类人机器人（高自由度）
 register(
     id='Humanoid-v1',
     entry_point='gym.envs.mujoco:HumanoidEnv',
-    max_episode_steps=1000,
+    max_episode_steps=1000,# 无阈值，挑战性大
 )
 
 register(
