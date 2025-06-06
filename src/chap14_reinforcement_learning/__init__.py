@@ -143,29 +143,29 @@ register(
 register(
     id='KellyCoinflip-v0',   # 凯利判赌任务
     entry_point='gym.envs.toy_text:KellyCoinflipEnv',
-    reward_threshold=246.61,
+    reward_threshold=246.61,# 精确的数学期望阈值
 )
 register(
     id='KellyCoinflipGeneralized-v0',    # 通用凯利判赌
     entry_point='gym.envs.toy_text:KellyCoinflipGeneralizedEnv',
 )
-
+# 4x4冰冻湖面导航任务
 register(
     id='FrozenLake-v0',   # 冰湖行走任务
     entry_point='gym.envs.toy_text:FrozenLakeEnv',
-    kwargs={'map_name' : '4x4'},   # 4x4网格
+    kwargs={'map_name' : '4x4'},   # 4x4网格，尺寸
     max_episode_steps=100,
     reward_threshold=0.78, # optimum = .8196   # 成功到达目标的平均奖励
 )
-
+# 8x8冰冻湖面任务
 register(
     id='FrozenLake8x8-v0',
     entry_point='gym.envs.toy_text:FrozenLakeEnv',
-    kwargs={'map_name' : '8x8'},
+    kwargs={'map_name' : '8x8'},# 更大网格尺寸
     max_episode_steps=200,
-    reward_threshold=0.99, # optimum = 1
+    reward_threshold=0.99, # optimum = 1。接近完美表现
 )
-
+# 悬崖行走路径规划任务
 register(
     id='CliffWalking-v0',
     entry_point='gym.envs.toy_text:CliffWalkingEnv',
