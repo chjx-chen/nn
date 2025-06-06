@@ -56,7 +56,13 @@ def logsumexp(log_p, axis  =1, keepdims = False):
     #max_val = np.max(log_p, axis = axis, keepdims = True)
     #return max_val + np.log(np.sum(np.exp(log_p - max_val), axis=axis, keepdims = keepdims))
     """优化后的logsumexp实现，包含数值稳定性增强和特殊case处理"""
-    log_p = np.asarray(log_p)
+    #计算对数概率的log(sum(exp(log_p)))的数值稳定实现
+    #参数:
+        #log_p (ndarray): 输入的对数概率数组
+        #axis (int): 计算求和的轴
+        #keepdims (bool): 是否保持维度
+    #返回:ndarray: 计算结果的数组
+    log_p = np.asarray(log_p)#确保输入为NumPy数组
     
     # 处理空输入情况
     if log_p.size == 0:  # 检查输入的对数概率数组是否为空
