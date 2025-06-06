@@ -3,6 +3,11 @@ import matplotlib.pyplot as plt # 导入所需模块
 
 # 生成混合高斯分布数据
 def generate_data(n_samples=1000):
+    ##生成包含三个高斯分布的混合数据集
+    ##参数: n_samples (int): 要生成的总样本数，默认为1000  
+    ##返回:
+       ## X (ndarray): 混合后的数据点，形状为(n_samples, 2)
+       ## y_true (ndarray): 每个样本的真实来源标签(0,1或2)
     np.random.seed(42)
     # 定义三个高斯分布的中心点
     mu_true = np.array([ 
